@@ -1,0 +1,5 @@
+#delete_at(1) removes the value at index 1 from the array
+#delete(1) deletes the first instance of the value 1
+
+No! #delete(1) deletes all instances of the value 1 from the array.
+it returns the argument value 1, and would return nil if the value were not found

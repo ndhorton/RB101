@@ -1,0 +1,21 @@
+---
+:english:
+  :name: |-
+    Please enter your name:
+  :name_empty: Make sure to enter your name.
+  :name_greet: Hi, %{name}! Welcome to Loan Calculator!
+  :amount_prompt: How much will you be borrowing?
+  :apr_prompt: What is the Annual Percentage Rate (APR)?
+  :duration_prompt: How many years duration is the loan?
+  :monthly_payment: |-
+    Your monthly payment will be:
+  :number_of_payments: |-
+    Number of payments: 
+  :total_repayed: |-
+    Total to be repayed: 
+  :total_interest: |-
+    Total interest: 
+  :valid_number: Please enter a valid number.
+  :again: Would you like to make another loan calculation (Y or N)?
+  :yes_or_no: Please enter Y or N.
+  :goodbye: Thanks for using the Loan Calculator, %{name}. Goodbye!

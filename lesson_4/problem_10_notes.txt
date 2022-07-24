@@ -1,0 +1,23 @@
+given a hash whose keys are names and values are sub-hashes of the person of
+that name's details.
+Modify each person's sub-hash to add an age_group key pointing to the age category they are in.
+
+the ranges are (0..17) == kid, (18..64) == adult, >= 65 == senior
+
+setting age group:
+if (0..17).include?(munsters[name]["age"])
+  age_group = 'kid'
+elsif (18..64).include?(...)
+  age_group = 'adult'
+elsif munsters[name]["age"] >= 65
+  age_group = 'senior'
+end
+
+munsters[name]["age_group"] = age_group
+
+algo:
+- Given a hash.
+- Iterate over the hash's pairs
+- On each iteration set the age group for the person represented by the k-v pair
+- Add key "age_group" to their subhash and assign to the age_group already set
+- Return hash

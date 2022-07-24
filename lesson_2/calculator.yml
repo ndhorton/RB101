@@ -1,0 +1,70 @@
+---
+:english:
+  :op_to_msg:
+    '1': Adding
+    '2': Subtracting
+    '3': Multiplying
+    '4': Dividing
+  :greeting: 'Welcome to Calculator! Enter your name:'
+  :name_empty: Make sure to use a valid name.
+  :name_greeting: 'Hi '
+  :first_num: What's the first number?
+  :second_num: What's the second number?
+  :invalid_num: Hmm... that doesn't look like a valid number
+  :op_prompt: |-
+    What operation would you like to perform?
+       1) add
+       2) subtract
+       3) multiply
+       4) divide
+  :invalid_op: Must choose 1, 2, 3 or 4
+  :wait_msg: the two numbers...
+  :result: 'The result is '
+  :again: Do you want to perform another calculation? (Y to calculate again)
+  :goodbye: Thank you for using the calculator. Goodbye!
+:spanish:
+  :op_to_msg:
+    '1': Agregar
+    '2': Restando
+    '3': Multiplicando
+    '4': División
+  :greeting: "¡Bienvenido a Calculadora! Introduzca su nombre:"
+  :name_empty: Asegúrate de usar un nombre válido.
+  :name_greeting: 'Hola, '
+  :first_num: "¿Cuál es el primer número?"
+  :second_num: "¿Cuál es el segundo número?"
+  :invalid_num: Hmm... eso no parece un número válido
+  :op_prompt: |-
+    ¿Qué operación le gustaría realizar?
+       1) agregar
+       2) restar
+       3) multiplicar
+       4) dividir
+  :invalid_op: Debe elegir 1, 2, 3 o 4
+  :wait_msg: los dos números...
+  :result: 'El resultado es '
+  :again: "¿Quieres realizar otro cálculo? (Y para calcular de nuevo)"
+  :goodbye: Gracias por usar la calculadora. ¡Adiós!
+:french:
+  :op_to_msg:
+    '1': Ajout
+    '2': Soustraction
+    '3': multiplication
+    '4': Diviser
+  :greeting: "Bienvenue dans la Calculatrice ! Entrez votre nom:"
+  :name_empty: Assurez-vous d'utiliser un nom valide.
+  :name_greeting: 'Salut, '
+  :first_num: "Quel est le premier numéro?"
+  :second_num: "Quel est le deuxième numéro?"
+  :invalid_num: Hmm... ça ne ressemble pas à un nombre valide
+  :op_prompt: |-
+    Quelle opération souhaitez-vous effectuer?
+       1) ajouter
+       2) soustraire
+       3) multiplier
+       4) diviser
+  :invalid_op: On doit choisir 1, 2, 3 ou 4
+  :wait_msg: les deux numéros...
+  :result: 'Le résultat est '
+  :again: "Voulez-vous effectuer un autre calcul? (Y pour recalculer)"
+  :goodbye: Merci d'avoir utilisé la calculatrice. Au revoir!

@@ -1,0 +1,40 @@
+casual:
+
+Given a string and a target character.
+
+Declare a counter which will be used for iteration and for keeping track of successive indexed characters in the string.
+
+Declare a counter to keep track of instances of the target character within the string.
+
+Iterate over each character in the string:
+  -if the current character is the same as the target character, increment the target instance counter
+  -if the instance counter is 3, save the current string index counter value
+
+If the iteration has finished and the target instance counter is < 3, set the index counter value to nil
+
+Return the saved index value
+
+formal:
+
+START
+
+# Given a string called "text" and a target character called "target"
+
+SET iterator = 0
+SET instances = 0
+
+WHILE iterator < length of text
+  IF character in text at space "iterator" == target
+    SET instances = instances + 1
+  
+  IF instances == 3
+    SET result = iterator
+  
+  iterator = iterator + 1
+
+IF instances < 3
+  SET result = nil
+
+PRINT result
+
+END

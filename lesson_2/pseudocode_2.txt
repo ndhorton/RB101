@@ -1,0 +1,28 @@
+casual:
+
+Given a collection of strings.
+
+Declare a variable to store a single string.
+
+Iterate through the collection one by one.
+  - append each string from the collection to the variable
+
+After iterating through the collection, return the string saved in the string variable.
+
+formal:
+
+START
+
+# Given a collection of strings called "words"
+
+SET joined_words = ""
+SET iterator = 1
+
+WHILE iterator <= length of words
+  SET joined_words = joined_words + value within words collection at space "iterator"
+  
+  SET iterator = iterator + 1
+
+PRINT joined_words
+
+END

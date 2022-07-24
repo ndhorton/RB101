@@ -1,0 +1,16 @@
+create_row helper method
+
+Start the loop
+- add the start integer to the row
+- increment the start integer by 2
+- break out of the loop if length of row == row_length
+
+sum_even_number_row method
+
+back to abstract mode:
+Calculating the start integer:
+Rule: First integer of row == last integer of preceding row + 2
+Algorithm:
+- Get the last row of the rows array
+- Get the last integer of that row
+- Add 2 to the integer

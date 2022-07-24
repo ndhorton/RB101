@@ -1,0 +1,14 @@
+In Ruby, ! means NOT in a logical sense, and can be used to reverse the truth value of the expression that follows it (switching false to true or true to false). ? is the ternary operator and is used in a conditional statement of the form:
+  true ? then_this : else_do_this
+In Ruby method naming conventions, it is common for ? to be appended to the names of methods which return a value based on some condition with respect to the caller (such as Array#empty?). 
+! is often appended to the names of methods which mutate the caller (though not always). 
+
+1. != means 'is not equal to' and it is used in constructing a Boolean expression based on the non-equality of two terms.
+2. the truth(iness) value of the object bound to user_name would be evaluated as its opposite (false -> true, true -> false)
+3. uniq! would mutate the words object rather than returning another object
+4. you might get a syntax error
+5. ? after something would signify the ternary operator if a space is left. if it is affixed to the end of a method invocation, it would need to be part the actual name of that method not to throw an error, since ? is a valid character for naming methods in Ruby. if it were appended to a variable name, that would throw an error since variable names cannot contain a question mark.
+6. !! reverses the reversal of truth value signified by !. It means NOT NOT.
+
+notes:
+I did not know that !! is commonly used to get the truth value of an object but it makes sense.

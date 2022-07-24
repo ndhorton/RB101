@@ -1,0 +1,22 @@
+titleize
+
+Problem: given a string. Capitalize every word in the string. Retain original spaces
+
+the string needs to be split into words. each word can then be capitalized.
+the words then need to be substituted in to their place in the string in a new copy
+of the string.
+
+algo
+
+- Given a string
+- Split the string on spaces into new array called words
+- Capitalize each word in words into a new array capital_words
+- Substitute capitalized words for original words in a copy of string
+- Return new capitalized string
+
+implementation details:
+Substitute step needs further thought
+- Substitute capitalized words for original words in a copy of string
+the capital_words collection needs to be iterated over and the copy of
+the string to be modified word by word until every word has been replaced with its
+capital form

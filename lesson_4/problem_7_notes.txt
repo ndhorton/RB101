@@ -1,0 +1,38 @@
+Given a string.
+Build a hash whose keys are each unique letter in the string and
+whose values are the frequencies of occurence of each letter in the string
+
+implicit requirements: letter implies spaces and symbols are not counted
+Does 'letter' rather than, say, 'alphabetic character', imply that 'T' and 't' are one
+letter? (so that case-insensitivity is important?) NO!!!
+The example demonstrates that: the letters are case-sensitive, space is not
+included (would come first in the hash otherwise), and that the characters should be
+sorted alphabetically. Pay attention to examples!
+
+input: string
+output: hash of k-v pairs where k = each letter that occurs, v = occurence frequency
+so that
+{ "F"=>1, "R"=>1, "T"=>1, "c"=>1, "e"=>2, ... }
+
+DS: handy to convert string's chars to array of chars
+
+algo:
+
+- Given a string.
+- Convert string to array of characters.
+- Remove duplicates
+- Remover non-letters
+
+- Iterate over array of unique characters mapping the number of times each letter (case
+  insensitive) occurs to a new array, letter_frequencies
+
+- Initialize a hash
+- Iterate over array of chars building the hash's keys with the unique chars and referencing
+  the corresponding frequencies from the frequencies array.
+
+- Return hash
+
+implementation notes:
+building the new hash is unclear. one could loop and use the same counter for chars array
+index and frequencies index. One could also build a nested array instead and convert
+to a hash.

@@ -1,0 +1,34 @@
+casual:
+
+Given two collections of numbers of equal length, called "numbers_1" and "numbers_2".
+
+Declare an empty collection called "target_numbers".
+Declare a counter.
+
+Iterate while counter < the length of the given collections
+  - if the counter is even
+    - append to target_numbers the value in numbers_1 at space "counter"
+  - otherwise append to target_numbers the value in numbers_2 at space "counter"
+
+Return target_numbers
+
+formal:
+
+START
+
+# Given two equally-sized collections of numbers, "numbers_1" and "numbers_2"
+
+SET target_numbers = empty array
+SET counter = 0
+
+WHILE counter < length of numbers_1
+  IF counter is even
+    READ value in numbers_1 at space "counter"
+    SET target_numbers to append this value from numbers_1
+  ELSE
+    READ value in numbers_2 at space "counter"
+    SET target_numbers to append this value from numbers_2
+
+PRINT target_numbers
+
+END

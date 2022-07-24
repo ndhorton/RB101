@@ -1,0 +1,278 @@
+Working with Blocks
+===================
+
+Example 2
+1 action: method call (map)
+1 object: array of arrays
+1 side-effect: none
+1 return value: an array of nils
+1 return used: no, but shown on line 6
+
+1-3 action: block execution
+1-3 object: each sub-array of the array of arrays
+1-3 side-effect: none
+1-3 return value: nil
+1-3 return used: yes, used by map for transformation
+
+2 action: method call (first)
+2 object: each sub-array
+2 side-effect: none
+2 return value: first element of each sub-array
+2 return used: yes, argument of puts method
+
+2 action: method call (puts)
+2 object: return value from first
+2 side-effect: outputs string conversion of return value of first
+2 return value: nil
+2 return used: yes, determines return value of block
+----
+
+Example 3
+1 action: method call (map)
+1 object: array of arrays
+1 side-effect: no
+1 return value: array of first elements from each sub-array in calling array [1, 3]
+1 return used: no
+
+1-4 action: block execution
+1-4 object: each sub-array from map's calling array of arrays
+1-4 side-effects: none
+1-4 return value: first element from sub-array
+1-4 return used: yes, used by map for transformation
+
+2 action: method call (first)
+2 object: each sub-array
+2 side-effect: none
+2 return value: the first element in sub-array
+2 return used: yes, passed as argument to puts
+
+2 action: method call (puts)
+2 object: the return value of first, the first element in sub-array
+2 side-effect: outputs string conversion of the object to screen
+2 return value: nil
+2 return used: no
+
+3 action: method call (first)
+3 object: each sub-array
+3 side-effect: no
+3 return value: first element from sub-array
+3 return used: yes, determines return value of block
+----
+
+Example 4
+my_arr will contain the original array
+every number in the original array that is > 5 will be output to screen (8, 7, 12)
+
+1 action: assignment
+1 object: the variable my_arr XXX the array of arrays
+1 side-effect: none
+1 return value: the original array of arrays
+1 return used: no
+
+1 action: method call (each)
+1 object: the outer array
+1 side-effect: none
+1 return value: returns caller
+1 return used: yes, assigned to my_arr
+
+1-7 action: outer block execution
+    object: each sub-array, assigned to local variable arr
+    side-effect: none
+    return value: nil XXX it will be each sub-array, returned by each (ln 2)
+    return used: no
+
+2 action: method call (each)
+  object: each sub-array
+  side-effect: none
+  return value: the sub-array
+  return used: no XXX yes, used to determine return value of outer block
+
+2-6 action: inner block execution
+    object: each element of the sub-array assigned to local variable num
+    side-effect: none
+    return value: nil
+    return used: no
+
+3 action: comparison (>)
+  object: num
+  side-effect: none
+  return value: Boolean object
+  return used: yes, used to determine whether if statement block is run
+
+3-5 action: if statement
+    object: the Boolean result of evaluating (num > 5)
+    side-effect: determines whether to call puts XXX not a side-effect, none
+    return value: nil
+    return used: determines return value of block
+
+4 action: method call (puts)
+  object: the value referenced by num
+  side-effect: outputs num to screen
+  return value: nil
+  return used: determines return value of block XXX determines return value of if statement
+  
+----
+Example 5
+map is called on a nested array
+each sub-array is passed in turn to the block with the local var name: arr
+another map call is made on arr, each number in the sub-array passed in as: num
+the inner block contains an expression (num * 2)
+the return? value of the evaluation of the expression is also the return value 
+  of the inner block
+the inner instance of map uses these block return values to return a new sub-array 
+  of the original numbers doubled
+this inner map return is also the return value of the outer block
+the outer instance of map uses these return values to return a new transformed nested array
+the return value will be: [[2, 4], [6, 8]]
+nothing is done with this ultimate return value
+
+1 action: method call (map)
+  object: a nested array (the outer array)
+  side-effect: none
+  return value: a new, transformed nested array
+  return used: no
+
+1-5 action: outer block execution
+    object: each sub-array from the nested array
+    side-effect: none
+    return value: each transformed sub-array returned by inner map call
+    return used: yes, outer map uses it for transformation
+  
+2 action: method call (map)
+  object: each sub-array, passed in to block as arr
+  side-effect: none
+  return value: a new, transformed array
+  return used: yes, used to determine return value of outer block
+
+2-4 action: inner block execution
+  object: each number from arr, passed in as num
+  side-effect: none
+  return value: an integer == num * 2
+  return used: yes, used by inner map call for transformation
+
+3 action: expression (num * 2) XXX still a method call in Ruby
+LS: action: method call (*)
+  object: num, an integer -- LS: an element within each sub-array
+  side-effect: none
+  return value: an integer == num * 2
+  return used: yes, determines return value of inner block
+
+----
+
+Example 6
+
+1 action: method call (select)
+  object: array of hashes
+  side-effect: none
+  return value: a new array of selected hashes
+  return used: no
+
+1-5 action: outer block execution
+    object: each hash from the array of hashes
+    side-effect: none
+    return value: Boolean object
+    return used: yes, used by the select method for selection
+
+2 action: method call (all?)
+  object: each hash
+  side-effect: none
+  return value: Boolean
+  return used: yes, used to determine the return value of the outer block
+
+2-4 action: inner block execution
+    object: each key and value pair from each hash
+    side-effect: none
+    return value: truthy or falsey value
+    return used: yes, used by the all? method for determining its return value
+
+3 action: comparison (==)
+  object: string derived from index 0 of the value of each hash
+  side-effect: none
+  return value: Boolean
+  return used: yes, used to determine the return value of inner block
+
+3 action: method call (to_s)
+  object: each key from each hash
+  side-effect: none
+  return value: a string conversion of the key
+  return used: yes, used by the comparison operator ==
+
+using any? in place of all? would lead to select producing a different return value:
+[{ a: 'ant', b: 'elephant' }, { c: 'cat' }]
+this is because it would return true if any block iteration returns a truthy value, whereas
+all? requires every block iteration to return truthily.
+
+----
+Example 10
+
+1 action: method call (toplevel map)
+  object: nested (up to) 3-layer array, [[[1, 2], [3, 4]], [5, 6]]
+  side-effect: none
+  return value: a transformed nested 3-level array [[[2, 3], [4, 5]], [6, 7]]
+  return used: no
+
+1-11 action: toplevel block execution
+     object: each 2nd level array ([[1, 2], [3, 4]] and [5, 6])
+     side effect: none
+     return value: each transformed array from 2nd level map
+     return used: yes, used by toplevel map for transformation
+
+2 action: method call (2nd level map)
+  object: each 2nd level subarray
+  side effect: none
+  return value: transformed subarrays with incremented integers
+  return used: yes, to determine toplevel block returns
+
+2-10 action: 2nd level block execution
+     object: each 3rd level array from 1st subarray AND each integer from 2nd
+     side effect: none
+     return value: two transformed 3rd level arrays and two incremented integers
+     return used: yes, used by 2nd level map for transformation
+
+3-9 action: conditional statement (if/else)
+    object: each 3rd level array from 1st subarray AND each integer from 2nd
+    side effect: none
+    return value: two transformed 3rd level arrays and two incremented integers
+    return used: no
+
+3 action: Boolean expression (el.to_s.size == 1)
+  object: each 3rd level array from 1st subarray AND each integer from 2nd
+  side effect: none
+  return value: true or false
+  return used: yes, used by if conditional to determine branching
+
+3 action: method call (to_s)
+  object: each 3rd level array from 1st subarray AND each integer from 2nd
+  side effect: none
+  return value: each element converted to a string representation
+  return used: yes, becomes caller of the size method
+
+3 action: method call (size)
+  object: each string returned by to_s
+  side effect: none
+  return value: the number of characters in each string
+  return used: yes, used in evaluation of Boolean expression
+
+4 action: method call (+)
+  object: each integer element passed into the 2nd level block
+  side effect: none
+  return value: that integer incremented by 1
+  return used: yes, determines the return value of 2nd level block
+
+6 action: method call (3rd level map)
+  object: each 3rd level subarray
+  side effect: none
+  return value: new, transformed array
+  return used: yes, used to determine 2nd level block return
+
+6-8 action: 3rd level block execution
+    object: each integer from 3rd level subarrays
+    side effect: none
+    return value: each integer incremented by 1
+    return used: yes, used by 3rd level map for transformation
+
+7 action: method call (+)
+  object: each integer in 3rd level subarrays
+  side effect: none
+  return value: incremented integer
+  return used: yes, determines 3rd level block's return values

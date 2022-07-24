@@ -1,0 +1,14 @@
+casual:
+
+Given two integers.
+Compute the sum of the two integers and return the new value.
+
+formal:
+
+START
+
+# Given two integers called "num_1" and "num_2"
+
+PRINT the computed sum of num_1 + num_2
+
+END

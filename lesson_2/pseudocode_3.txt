@@ -1,0 +1,32 @@
+casual:
+
+Given a collection of integers.
+
+Declare an empty collection.
+Declare an integer to act as a counter for iteration.
+
+Iterate through the original collection of integers.
+  - for every odd-numbered iteration through the collection, as determined by the integer division of the counter by 2:
+    - append the current integer value from the original collection to the new collection
+  - for every even-numbered iteration through the collection, pass to the next iteration.
+
+After iterating through the original collection, return the new collection.
+
+formal:
+
+START
+
+# Given a collection of integers called "numbers"
+
+SET selected_numbers = an empty collection
+SET iterator = 0
+
+WHILE iterator < length of numbers
+  IF iterator / 2 yields a non-zero remainder
+    append the value in numbers at space "iterator" to selected_numbers collection
+  
+  SET iterator = iterator + 1
+
+PRINT selected_numbers
+
+END

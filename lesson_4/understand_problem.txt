@@ -1,0 +1,26 @@
+palindromes are case sensitive
+
+smaller palindromes within larger ones should be treated as new palindromes
+
+return palindromes as items in an array
+
+if string is empty, return empty array
+
+if no palindromes are found return empty array
+
+questions:
+
+the palindromes don't seem to be real words, but 
+simply letter patterns which are the same forwards and backwards,
+ask if this is the case
+Better question: what is a 'substring'? What is a 'palindrome' here?
+
+what about numbers and symbols?
+
+what if given something that is not a string? verification?
+LS: Will inputs always be strings
+
+
+input: given a string
+
+output: array of all palindrome substrings of input string
