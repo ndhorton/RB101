@@ -1,7 +1,11 @@
-ef crunch(str)
-#   crunched_string = ''
-#   str.each_char do |char|
-#     crunched_string << char unless crunched_string[-1] == char
-#   end
-#   crunched_string
-# end
+def reverse(arr)
+  reversed_arr = []
+  i = -1
+
+  while i >= -(arr.size)
+    reversed_arr << arr[i]
+    i -= 1
+  end
+
+  reversed_arr
+end
