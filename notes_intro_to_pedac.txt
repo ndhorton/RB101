@@ -1,0 +1,51 @@
+# Introduction to PEDAC
+
+=begin
+Write a method that takes an array of consecutive letters as input and returns the missing letter.
+=end
+
+=begin
+----------------------- P
+Goal: parse through the given array and return the letter that is missing from the sequence
+
+Input:
+an array of characters in alphabetic order, missing one
+
+Output:
+a string containing the missing letter from the given array
+
+Rules:
+- the output string must be the opposite case of the letters in the given array
+
+----------------------- E
+['a','b','c','d','f'] == 'e'
+['O','Q','R','S'] == 'p'
+
+----------------------- D
+Range generated from minimum value char to max value char
+Then turn that range into an array
+
+----------------------- A
+Create a 'complete' array
+  Create a range generated from min value char to max value char, then convert it to an array
+
+Compare 'complete' array we created from range to the given array in a way that returns the missing letter (minus)
+  Return the missing letter by targeting index 0 of array resulting from comparison
+
+Convert that letter to the opposite case
+  If upper, convert to downcase
+  If lower, convert to upper
+=end
+
+def determine_missing_letter(array)
+  letter = ((array[0]..array[-1]).to_a - array)[0]
+  letter == letter.upcase ? letter.downcase : letter.upcase
+end
+
+p determine_missing_letter(['a','b','c','d','f']) == 'E' 
+# p determine_missing_letter(['O','Q','R','S']) == 'p'
+# p determine_missing_letter(["a","b","c","d","f"]) == "E"
+# p determine_missing_letter(["O","Q","R","S"]) == "p"
+
+- Code with intent. Avoid hack and slash - TEST FREQUENTLY
+
