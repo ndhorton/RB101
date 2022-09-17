@@ -1,4 +1,6 @@
 
-# def sequence(count, base)
-#   Array.new(count).map.with_index { |_, idx| base * (idx + 1) }
-# end
+def sequence(count, base)
+  multiples = []
+  count.times { |counter| multiples << (base * (counter + 1)) }
+  multiples
+end
