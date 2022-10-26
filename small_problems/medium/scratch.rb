@@ -1,34 +1,41 @@
-orders = {
-  lozenge_warehouse: [125.65, 392.34, 294.59],
-  greeb_roofing: [282.91, 439.69, 1020.00],
-  appleby_bakery: [20.34, 16.69]
+=begin
+P:
+input: a hash of family members as keys, each associated to another hash
+ouptut: the same data structure with an `age_group` key in each family member's
+hash associated with:
+(0..17)  then 'kid'
+(18..64) then 'adult'
+(65..)   then 'senior'
+
+A:
+-given a hash
+-get array of keys
+-iterate over keys array
+-set age = hash[key]["age"]
+-set hash[key]["age_group"] = switch
+--(0..17)  then 'kid'
+  (18..64) then 'adult'
+  (65..)   then 'senior'
+end switch
+
+=end
+
+munsters = {
+  "Herman" => { "age" => 32, "gender" => "male" },
+  "Lily" => { "age" => 30, "gender" => "female" },
+  "Grandpa" => { "age" => 402, "gender" => "male" },
+  "Eddie" => { "age" => 10, "gender" => "male" },
+  "Marilyn" => { "age" => 23, "gender" => "female"}
 }
 
-new_accounts = {
-  grigory_samovars: [390.33],
-  egbill_books: [20.11]
-}
+munsters.keys.each do |key|
+  age = munsters[key]["age"]
+  munsters[key]["age_group"] =
+    case age
+    when (0..17)  then 'kid'
+    when (18..64) then 'adult'
+    when (65..)   then 'senior'
+    end
+end
 
-potential_accounts = {
-  locust_emporium: [],
-  wallmart: []
-}
-
-projected_growth = new_accounts.merge(potential_accounts).keys.size
-
-orders.merge!(new_accounts)
-
-puts "New accounts projected for this quarter: #{projected_growth}"
-p orders
-
-# LS solution
-cat = {name: "whiskers"}
-weight = {weight: "10 lbs"}
-
-puts cat.merge(weight)
-puts cat
-puts weight
-
-puts cat.merge!(weight)
-puts cat
-puts weight
+p munsters
