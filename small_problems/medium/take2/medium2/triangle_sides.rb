@@ -85,6 +85,24 @@ def triangle(a, b, c)
   end
 end
 
+# LS solution
+
+def triangle(side1, side2, side3)
+  sides = [side1, side2, side3]
+  largest_side = sides.max
+
+  case
+  # or largest_side >= sides.reduce(:+) - largest_side
+  when 2 * largest_side >= sides.reduce(:+), sides.include?(0) # the comma just functions as || here
+    :invalid                                                   # but can be used in a case (variable)
+  when side1 == side2 && side2 == side3                        # statement to have multiple values
+    :equilateral                                               # lead to one branch `when 2, 4, 6 then ...`
+  when side1 == side2 || side1 == side3 || side2 == side3
+    :isosceles
+  else
+    :scalene
+  end
+end
 
 
 
