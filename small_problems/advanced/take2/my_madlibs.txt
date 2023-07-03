@@ -1,0 +1,7 @@
+That %{adjective} %{noun} %{verb} me %{adverb}
+How %{adjective} is your %{noun}? It %{verb} me %{adverb}
+So very %{adverb}, this %{adjective} %{noun} %{verb} us all
+The %{adjective} among us agree: the %{noun} who %{verb} last, %{verb} %{adverb}
+
+"Even the most %{adjective} %{noun} never %{verb} another's %{noun}."
+  -- proverb
