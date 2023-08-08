@@ -55,6 +55,9 @@ Return result
 
 ASCII_TO_INTEGER = [*('0'..'9')].zip([*(0..9)]).to_h
 
+HEX_TO_INTEGER =  ([*('0'..'9')] + [*('a'..'f')])
+                    .zip([*(0..15)]).to_h
+
 def string_to_integer(decimal_string)
   decimal_string.chars.reduce(0) do |result, char|
     digit = ASCII_TO_INTEGER[char]
@@ -71,7 +74,19 @@ def string_to_integer(decimal_string)
   end
 end
 
+# Further exploration
+def hex_string_to_integer(hex)
+  hex.chars.reduce(0) do |result, char|
+    digit_value = HEX_TO_INTEGER[char.downcase]
+    result *= 16
+    result += digit_value
+  end
+end
+
 # 14:54
 
-p string_to_integer('4321') == 4321
-p string_to_integer('570') == 570
+# p string_to_integer('4321') == 4321
+# p string_to_integer('570') == 570
+
+p hex_string_to_integer('ff') == 'ff'.to_i(16)
+p hex_string_to_integer('c3e9') == 'c3e9'.to_i(16)
