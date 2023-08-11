@@ -12,7 +12,7 @@ normalize negative minutes by:
 repeatedly add minuts in a day to minutes until positive
 so,
 while minutes < 0
-    minutes = minutes + minutes_in_a_day
+    minutes = minutes + minutes_per_a_day
 
 hours = normal_minutes / minutes in hour
 minute_output = normal_minutes % minutes in hour
@@ -53,37 +53,47 @@ Set minutes_readout := minutes % MINUTES_IN_HOUR
 Create string composed of String(hours_readout) + ':' + String(minutes_readout)
 
 =end
+SECONDS_PER_MINUTE = 60
+MINUTES_PER_HOUR = 60
+HOURS_PER_DAY = 24
+MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY
 
-MINUTES_IN_HOUR = 60
-HOURS_IN_DAY = 24
-MINUTES_IN_DAY = MINUTES_IN_HOUR * HOURS_IN_DAY
+MIDNIGHT = Time.utc(0)
 
 def time_of_day(minutes)
-  minutes += MINUTES_IN_DAY while minutes < 0
-  minutes %= MINUTES_IN_DAY
-  hours_readout, minutes_readout = minutes.divmod(MINUTES_IN_HOUR)
+  minutes += MINUTES_PER_DAY while minutes < 0
+  minutes %= MINUTES_PER_DAY
+  hours_readout, minutes_readout = minutes.divmod(MINUTES_PER_HOUR)
   format("%.2i:%.2i", hours_readout, minutes_readout)
 end
 
 def normalize_minutes_to_0_through_1439(minutes)
   while minutes < 0
-    minutes += MINUTES_IN_DAY
+    minutes += MINUTES_PER_DAY
   end
 
-  minutes % MINUTES_IN_DAY
+  minutes % MINUTES_PER_DAY
 end
 
 def time_of_day(delta_minutes)
   delta_minutes = normalize_minutes_to_0_through_1439(delta_minutes)
-  hours, minutes = delta_minutes.divmod(MINUTES_IN_HOUR)
+  hours, minutes = delta_minutes.divmod(MINUTES_PER_HOUR)
   format('%02d:%02d', hours, minutes)
 end
 
 # Further exploration
 # 1
 def time_of_day(delta_minutes)
-  delta_minutes %= MINUTES_IN_DAY
-  hours, minutes = delta_minutes.divmod(MINUTES_IN_HOUR)
+  delta_minutes %= MINUTES_PER_DAY
+  hours, minutes = delta_minutes.divmod(MINUTES_PER_HOUR)
+  format('%02d:%02d', hours, minutes)
+end
+
+#2
+def time_of_day(delta_minutes)
+  target_time = MIDNIGHT + (SECONDS_PER_MINUTE * delta_minutes)
+  hours = target_time.hour
+  minutes = target_time.min
   format('%02d:%02d', hours, minutes)
 end
 
