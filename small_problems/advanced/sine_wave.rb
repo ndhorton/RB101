@@ -1,36 +1,17 @@
-# Draw an ascii sine wave
+# Draw an ascii sine wave with x and y flipped
 
-# So this draws a wave of sorts with the x and y flipped
-# and the zero point at 40 spaces into an 80 space grid
-# TODO: find a way to iterate through values that can
-#       act as inputs to the Math.sin() method so as to
-#       calculate horizontal displacement according to sin
-#       function value
+DENOMINATOR = 8
+AMPLITUDE = 10
+PERIOD = DENOMINATOR * 2
+CENTER_LINE = AMPLITUDE * 2
 
-grid_size = 80
-
-direction = :up
-displacement = 0
-loop do
-  if displacement >= 0
-    point = (" " * 40) << (" " * displacement.abs) << "*"
-  else
-    point = (" " * (40 - displacement.abs)) << "*" 
+while true
+  (0).upto(PERIOD - 1) do |coefficient|
+    # theta = (coefficient * Math::PI).fdiv(DENOMINATOR)
+    theta = Rational(coefficient * Math::PI, DENOMINATOR)
+    sin_value = (Math.sin(theta) * AMPLITUDE).round
+    print ' ' * (CENTER_LINE + sin_value)
+    print "*\n"
+    sleep 0.3
   end
-  puts point
-  if direction == :up && displacement < 40
-    displacement += 1
-  elsif direction == :down && displacement > -40
-    displacement -= 1
-  elsif displacement == 40 && direction == :up
-    direction = :down
-    displacement -= 1
-  elsif displacement == -40 && direction == :down
-    direction = :up
-    displacement += 1
-  else
-    puts "something went wrong"
-    break
-  end
-  sleep(0.05)
 end
