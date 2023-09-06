@@ -56,10 +56,10 @@ def group_anagrams(words)
   end
 end
 
-def groop_by(array)
+def groop_by(array, &block)
   result = {}
   array.each do |element|
-    key_object = yield(element)
+    key_object = block.call(element)
     if result.key?(key_object)
       result[key_object] << element
     else
