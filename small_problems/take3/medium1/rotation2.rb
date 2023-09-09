@@ -84,6 +84,24 @@ def digit_split(number)
   result
 end
 
+def digit_split(number)
+  number.digits.reverse
+end
+
+def digit_split(number)
+  result = []
+  while number > 0
+    number, digit = number.divmod(10)
+    result << digit
+  end
+
+  (0...result.size / 2).each do |start_index|
+    result[start_index], result[-1 - start_index] =
+      result[-1 - start_index], result[start_index]
+  end
+  result
+end
+
 def digit_join(array)
   array.reduce(0) do |sum, digit|
     sum *= 10
@@ -96,6 +114,13 @@ def rotate_rightmost_digits(number, n)
   digit_arr = digit_arr[0...-n] + rotate_array(digit_arr[-n..-1])
   digit_join(digit_arr)
 end
+
+# LS solution
+# def rotate_rightmost_digits(number, n)
+#   all_digits = number.to_s.chars
+#   all_digits[-n..-1] = rotate_array(all_digits[-n..-1])
+#   all_digits.join.to_i
+# end
 
 
 p rotate_rightmost_digits(735291, 1) == 735291
