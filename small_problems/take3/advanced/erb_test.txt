@@ -1,0 +1,1 @@
+Good morning. It is <%= Time.now.hour %>:<%= Time.now.min %>.

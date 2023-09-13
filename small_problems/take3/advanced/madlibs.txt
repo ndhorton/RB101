@@ -1,0 +1,4 @@
+The <%= ADJECTIVES.sample %> brown <%= NOUNS.sample %> <%= ADVERBS.sample %>
+<%= VERBS.sample %> the <%= ADJECTIVES.sample %> yellow
+<%= NOUNS.sample %>, who <%= ADVERBS.sample %> <%= VERBS.sample %> his
+<%= NOUNS.sample %> and looks around.

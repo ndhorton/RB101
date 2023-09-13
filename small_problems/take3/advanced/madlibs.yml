@@ -1,0 +1,4 @@
+sentence1: ["The %{adjective} %{adjective} %{noun} %{adverb}",
+  "%{verb} the %{adjective} yellow",
+  "%{noun}, who %{adverb} %{verb} his",
+  "%{noun} and looks around."]
