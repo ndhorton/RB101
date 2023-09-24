@@ -74,6 +74,22 @@ def iterative_merge_sort(array)
   groups.first
 end
 
+
+def iterative_merge_sort(array)
+  groups = array.map { |element| [element] }
+  while groups.size > 1
+    i = 1
+    new_groups = []
+    while i < groups.size
+      new_groups << merge(groups[i - 1], groups[i])
+      i += 2
+    end
+    new_groups[-1] = merge(new_groups[-1], groups[-1]) if groups.size.odd?
+    groups = new_groups
+  end
+  groups.first
+end
+
 def merge(array1, array2)
   index1 = 0
   index2 = 0
@@ -96,7 +112,7 @@ def merge(array1, array2)
   end
 end
 
-p iterative_merge_sort([6, 2, 7, 1, 4])
+p iterative_merge_sort([6, 2, 7, 1, 4]) == [1, 2, 4, 6, 7]
 
 p merge_sort([9, 5, 7, 1]) == [1, 5, 7, 9]
 p merge_sort([5, 3]) == [3, 5]
