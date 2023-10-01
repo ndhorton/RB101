@@ -59,14 +59,23 @@ MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY
 def after_midnight(time)
   hours, minutes = time.split(':').map(&:to_i)
   hours %= HOURS_PER_DAY
-  result = (hours * MINUTES_PER_HOUR) + minutes
+  result = (hours * MINUTES_PER_HOUR + minutes)
   result
 end
 
 def before_midnight(time)
   minutes_after = after_midnight(time)
   
-  -minutes_after % MINUTES_PER_DAY
+  # -minutes_after % MINUTES_PER_DAY
+  (MINUTES_PER_DAY - minutes_after) % MINUTES_PER_DAY
+end
+
+# Further exploration
+def after_midnight(time)
+  # time = '00' + time[2..-1] if time[0..1] == '24'
+  today = Time.now
+  time_object = Time.new("#{today.year}-#{"%02d" % today.month}-#{"%02d" % today.mday} #{time}:00")
+  (time_object.hour * MINUTES_PER_HOUR + time_object.min) % MINUTES_PER_DAY
 end
 
 p after_midnight('00:00') == 0
