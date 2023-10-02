@@ -56,6 +56,15 @@ def max_rotation(number)
   number
 end
 
+def max_rotation(number)
+  number_of_digits = number.to_s.size
+  number_of_digits.downto(2) do |n|
+    number = rotate_rightmost_digits(number, n)
+  end
+  number
+end
+
+
 def rotate_array(array)
   return [] if array.empty?
   array[1..-1] + [ array[0] ]
